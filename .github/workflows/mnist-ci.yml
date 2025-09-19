@@ -1,0 +1,56 @@
+name: MNIST Model CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest
+        
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        
+    - name: Test with pytest
+      run: |
+        python -m pytest tests/ -v
+        
+    - name: Run basic training test
+      run: |
+        python -c "
+        import torch
+        from models.mlp import MLP
+        from models.cnn import SimpleCNN
+        
+        # Test model initialization
+        mlp = MLP()
+        cnn = SimpleCNN()
+        
+        # Test forward pass
+        test_input = torch.randn(1, 784)
+        mlp_output = mlp(test_input)
+        cnn_output = cnn(test_input)
+        
+        print('MLP output shape:', mlp_output.shape)
+        print('CNN output shape:', cnn_output.shape)
+        print('Basic tests passed!')
+        "
