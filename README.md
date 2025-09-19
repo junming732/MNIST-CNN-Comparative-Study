@@ -31,7 +31,7 @@ The project is modularized for clarity and reusability:
 ## 👨‍💻 Author
 
 **Your Name**
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/junmingma)
+- LinkedIn: [Junming Ma](https://linkedin.com/in/junmingma)
 - Email: louisama778@gmail.com
 
 *This project was completed as part of the Deep Learning (1RT720) course at Uppsala University.*
