@@ -28,10 +28,4 @@ The project is modularized for clarity and reusability:
 - `utils/`: Contains boilerplate code for training, data loading, and visualization.
 - `main.py`: The main script to orchestrate experiments and parse command-line arguments.
 
-## 👨‍💻 Author
-
-**Your Name**
-- LinkedIn: [Junming Ma](https://linkedin.com/in/junmingma)
-- Email: louisama778@gmail.com
-
 *This project was completed as part of the Deep Learning (1RT720) course at Uppsala University.*
